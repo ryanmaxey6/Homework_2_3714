@@ -1,10 +1,12 @@
 package com.example.homework2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -33,9 +35,14 @@ public class ListActivity extends AppCompatActivity {
         listFragment2.setDisplay(lapTimes);
     }
 
-    public void clickedBack(View view)
-    {
-        Intent i1 = new Intent(this, MainActivity.class);
-        startActivity(i1);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+        {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
